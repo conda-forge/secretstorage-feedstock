@@ -21,7 +21,6 @@ requirements:
     - pip
   run:
     - python
-    - jeepney
     - cryptography
     - dbus
 
