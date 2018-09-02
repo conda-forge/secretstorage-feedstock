@@ -1,6 +1,6 @@
 {% set name = "SecretStorage" %}
-{% set version = "3.0.1" %}
-{% set sha256 = "819087ca89c0d6c5711692f41fb26f786af9dcc5bb89d567722a66edfbb2a689" %}
+{% set version = "3.1.0" %}
+{% set sha256 = "29aa3cbd36dd5e54ac17d69161f9a150548f4ffba21fa8b5fdd5add854fe7d8b" %}
 
 package:
   name: {{ name|lower }}
