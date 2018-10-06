@@ -1,19 +1,17 @@
-{% set name = "SecretStorage" %}
 {% set version = "3.1.0" %}
-{% set sha256 = "29aa3cbd36dd5e54ac17d69161f9a150548f4ffba21fa8b5fdd5add854fe7d8b" %}
 
 package:
-  name: {{ name|lower }}
+  name: secretstorage
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  url: https://pypi.io/packages/source/S/SecretStorage/SecretStorage-{{ version }}.tar.gz
+  sha256: 29aa3cbd36dd5e54ac17d69161f9a150548f4ffba21fa8b5fdd5add854fe7d8b
 
 build:
+  number: 1
   skip: True  # [win or osx or py<35]
-  number: 0
-  script: python -m pip install --no-deps --ignore-installed .
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
 
 requirements:
   host:
