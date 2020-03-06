@@ -1,4 +1,4 @@
-{% set version = "3.1.2" %}
+{% set version = "2.3.1" %}
 
 package:
   name: secretstorage
@@ -6,12 +6,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/S/SecretStorage/SecretStorage-{{ version }}.tar.gz
-  sha256: 15da8a989b65498e29be338b3b279965f1b8f09b9668bd8010da183024c8bff6
+  sha256: 3af65c87765323e6f64c83575b05393f9e003431959c9395d1791d51497f29b6
 
 build:
   number: 0
-  skip: True  # [win or osx or py<35]
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
+  skip: True  # [win or py>=35]
+  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
 
 requirements:
   host:
@@ -19,9 +19,8 @@ requirements:
     - pip
   run:
     - python
-    - jeepney
     - cryptography
-    - dbus
+    - dbus-python
 
 test:
   imports:
