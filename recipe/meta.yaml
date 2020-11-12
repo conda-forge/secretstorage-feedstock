@@ -1,4 +1,4 @@
-{% set version = "3.1.2" %}
+{% set version = "3.2.0" %}
 
 package:
   name: secretstorage
@@ -6,12 +6,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/S/SecretStorage/SecretStorage-{{ version }}.tar.gz
-  sha256: 15da8a989b65498e29be338b3b279965f1b8f09b9668bd8010da183024c8bff6
+  sha256: 46305c3847ee3f7252b284e0eee5590fa6341c891104a2fd2313f8798c615a82
 
 build:
-  number: 2
-  skip: True  # [win or osx or py<35]
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
+  number: 0
+  skip: true  # [win or osx or py<35]
+  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
 
 requirements:
   host:
@@ -32,7 +32,7 @@ about:
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
-  summary: 'Provides a way for securely storing passwords and other secrets.'
+  summary: Provides a way for securely storing passwords and other secrets.
   description: |
     This module provides a way for securely storing passwords and other secrets.
     It uses D-Bus Secret Service API that is supported by GNOME Keyring (since 
@@ -49,4 +49,4 @@ about:
 extra:
   recipe-maintainers:
     - CurtLH
-    - ccordoba12 
+    - ccordoba12
