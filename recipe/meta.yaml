@@ -1,4 +1,4 @@
-{% set version = "3.3.0" %}
+{% set version = "3.3.1" %}
 
 package:
   name: secretstorage
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/S/SecretStorage/SecretStorage-{{ version }}.tar.gz
-  sha256: 30cfdef28829dad64d6ea1ed08f8eff6aa115a77068926bcc9f5225d5a3246aa
+  sha256: fd666c51a6bf200643495a04abb261f83229dcb6fd8472ec393df7ffc8b6f195
 
 build:
   number: 0
