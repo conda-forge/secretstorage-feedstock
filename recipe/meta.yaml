@@ -10,18 +10,18 @@ source:
 
 build:
   number: 0
-  skip: true  # [win or osx or py<35]
+  skip: true  # [win or osx or py<310]
   script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
 
 requirements:
   host:
     - python
     - pip
-    - setuptools >=61.2
+    - setuptools >=77.0
   run:
     - python
     - jeepney >=0.6
-    - cryptography
+    - cryptography >=2.0
     - dbus
 
 test:
