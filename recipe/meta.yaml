@@ -5,11 +5,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/S/SecretStorage/secretstorage-{{ version }}.tar.gz
+  url: https://files.pythonhosted.org/packages/source/S/SecretStorage/secretstorage-{{ version }}.tar.gz
   sha256: f04b8e4689cbce351744d5537bf6b1329c6fc68f91fa666f60a380edddcd11be
 
 build:
-  number: 1
+  number: 2
   skip: true  # [win or osx or py<310]
   script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
 
