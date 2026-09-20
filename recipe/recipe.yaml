@@ -1,22 +1,27 @@
-{% set version = "3.5.0" %}
+schema_version: 1
+
+context:
+  version: "3.5.0"
 
 package:
   name: secretstorage
-  version: {{ version }}
+  version: ${{ version }}
 
 source:
-  url: https://files.pythonhosted.org/packages/source/S/SecretStorage/secretstorage-{{ version }}.tar.gz
+  url: https://files.pythonhosted.org/packages/source/S/SecretStorage/secretstorage-${{ version }}.tar.gz
   sha256: f04b8e4689cbce351744d5537bf6b1329c6fc68f91fa666f60a380edddcd11be
 
 build:
   number: 2
-  skip: true  # [win or osx or py<310]
-  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
+  skip: win or osx or match(python, "<3.10")
+  script: ${{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
 
 requirements:
   build:
-    - python                                 # [build_platform != target_platform]
-    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - if: build_platform != target_platform
+      then: python
+    - if: build_platform != target_platform
+      then: cross-python_${{ target_platform }}
   host:
     - python
     - pip
@@ -27,30 +32,32 @@ requirements:
     - cryptography >=2.0
     - dbus
 
-test:
-  imports:
-    - secretstorage
+tests:
+  - python:
+      imports:
+        - secretstorage
+      pip_check: false
 
 about:
-  home: https://github.com/mitya57/secretstorage
   license: BSD-3-Clause
-  license_family: BSD
   license_file: LICENSE
   summary: Provides a way for securely storing passwords and other secrets.
   description: |
     This module provides a way for securely storing passwords and other secrets.
-    It uses D-Bus Secret Service API that is supported by GNOME Keyring (since 
+    It uses D-Bus Secret Service API that is supported by GNOME Keyring (since
     version 2.30) and KSecretsService.
-    The main classes provided are secretstorage.Item, representing a secret item 
-    (that has a label, a secret and some attributes) and secretstorage.Collection, 
+    The main classes provided are secretstorage.Item, representing a secret item
+    (that has a label, a secret and some attributes) and secretstorage.Collection,
     a place items are stored in.
-    SecretStorage supports most of the functions provided by Secret Service, 
-    including creating and deleting items and collections, editing items, locking 
+    SecretStorage supports most of the functions provided by Secret Service,
+    including creating and deleting items and collections, editing items, locking
     and unlocking collections (asynchronous unlocking is also supported).
-  doc_url: https://secretstorage.readthedocs.io/en/latest/
-  dev_url: https://github.com/mitya57/secretstorage
+  homepage: https://github.com/mitya57/secretstorage
+  repository: https://github.com/mitya57/secretstorage
+  documentation: https://secretstorage.readthedocs.io/en/latest/
 
 extra:
   recipe-maintainers:
     - CurtLH
     - ccordoba12
+
