@@ -28,7 +28,7 @@ requirements:
     - cryptography >=2.0
     - dbus
     - jeepney >=0.6
-    - python >=${{ python_min }}.*
+    - python >=${{ python_min }}
 
 tests:
   - python:
