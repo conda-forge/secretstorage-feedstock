@@ -25,6 +25,7 @@ requirements:
     - pip
     - setuptools >=77.0
   run:
+    - __linux
     - cryptography >=2.0
     - dbus
     - jeepney >=0.6
